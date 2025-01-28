@@ -1,4 +1,5 @@
-export const isDarkTheme = () => {
+export const isDarkMode = () => {
+  if (typeof window === "undefined") return false;
   return (
     window.matchMedia &&
     window.matchMedia("(prefers-color-scheme: dark)").matches
@@ -6,5 +7,5 @@ export const isDarkTheme = () => {
 };
 
 export const getTheme = () => {
-  return isDarkTheme() ? "dark" : "light";
+  return isDarkMode() ? "dark" : "light";
 };

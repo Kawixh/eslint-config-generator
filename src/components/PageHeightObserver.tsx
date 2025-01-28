@@ -11,7 +11,7 @@ export default function PageHeightObserver() {
       setPageHeight(window.innerHeight);
     };
 
-    // Initial measurement
+    // Initial height
     updateHeight();
 
     // Listen for window resize
