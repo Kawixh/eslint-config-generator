@@ -1,16 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "ESLint Config Generator",
@@ -26,11 +15,13 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <script src="https://unpkg.com/react-scan/dist/auto.global.js" async />
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/geist-font@latest/dist/fonts.css"
+        />
       </head>
 
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-hidden`}
-      >
+      <body className="antialiased overflow-hidden font-sans">
         <main className="min-h-screen overflow-hidden">{children}</main>
       </body>
     </html>
