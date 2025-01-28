@@ -1,7 +1,12 @@
 "use client";
 
 import { useElementHeightStore } from "@/store/headerStore";
-import { ConfigOptions, Framework, Language } from "@/types/config";
+import {
+  ConfigOptions,
+  ESLintRuleValue,
+  Framework,
+  Language,
+} from "@/types/config";
 import { calculateHeight } from "@/utils/height";
 import { useState } from "react";
 import ConfigPreview from "./ConfigPreview";
@@ -43,7 +48,15 @@ export default function ConfigGenerator() {
   };
 
   const handleRulesSelect = (rules: Record<string, RuleValue>) => {
-    setConfig((prev) => ({ ...prev, rules: { ...prev.rules, ...rules } }));
+    setConfig((prev) => ({
+      ...prev,
+      rules: Object.fromEntries(
+        Object.entries(rules).map(([key, value]) => [
+          key,
+          value as ESLintRuleValue,
+        ])
+      ),
+    }));
   };
 
   return (

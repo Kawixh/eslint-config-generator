@@ -8,7 +8,7 @@ interface Rule {
   name: string;
   description: string;
   category: string;
-  schema: unknown[];
+  schema: Record<string, unknown>[];
   fixable: boolean;
   recommended: boolean;
 }
@@ -64,7 +64,7 @@ export default function RulesStep({ onSelect, selectedRules }: RulesStepProps) {
       const filtered = filterRules(query, plugin);
       setDisplayedRules(filtered);
     }, 300),
-    [filterRules]
+    [filterRules, setDisplayedRules]
   );
 
   // Update the effect to use the stable debounced function
